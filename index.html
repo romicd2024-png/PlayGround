@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#090b12" />
+  <link rel="icon" href="data:," />
+  <title>The Hollow Signal — a midnight mystery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="The Hollow Signal home"><span class="brand-mark">✳</span> NIGHTSHIFT <span class="brand-divider">/</span> ARCADE</a>
+      <div class="top-meta"><span class="live-dot"></span> FIELD RECORDING <span class="meta-sep">•</span> 1986</div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+
+    <section class="intro-row">
+      <div class="title-block"><div class="eyebrow"><span>CASE FILE 008</span><i></i><span>BLACKRIDGE COUNTY</span></div><h1>THE HOLLOW <em>SIGNAL</em></h1><p class="subtitle">Somewhere beyond the tree line, something is listening.</p></div>
+      <div class="status-card"><span class="status-label">CURRENT STATUS</span><strong><b class="status-dot"></b><span id="statusText">AWAITING NIGHTFALL</span></strong><span class="status-note">A quiet town. A wrong frequency.</span></div>
+    </section>
+
+    <section class="game-layout">
+      <div class="game-frame">
+        <div class="frame-top"><span><i class="rec-dot"></i> LIVE FEED <span class="frame-divider">/</span> <span id="sceneLabel">THE OLD TOWN</span></span><span id="clock">11:47 PM</span></div>
+        <div class="canvas-wrap">
+          <canvas id="game" width="960" height="600" aria-label="Top-down paranormal mystery game"></canvas>
+          <div class="screen-overlay" id="overlay">
+            <div class="overlay-grain"></div>
+            <div class="overlay-content">
+              <div class="overlay-tag"><span>BLACKRIDGE, INDIANA</span><span>OCT 24 — 1986</span></div>
+              <div class="title-sigil">✳</div>
+              <p class="overlay-kicker">THE STATIC IS GETTING LOUDER</p>
+              <h2>DON'T ANSWER<br><em>THE SIGNAL.</em></h2>
+              <p class="overlay-copy">Four recordings are scattered around town.<br>Find them. Reach the radio van. Don't let it find you.</p>
+              <button class="start-button" id="startButton">BEGIN THE SEARCH <span>↗</span></button>
+              <div class="overlay-hint">WASD / ARROWS TO MOVE <span>·</span> SHIFT TO RUN <span>·</span> M TO MUTE</div>
+            </div>
+          </div>
+          <div class="result-overlay hidden" id="resultOverlay"><div class="result-card"><span class="result-eyebrow" id="resultEyebrow">TRANSMISSION COMPLETE</span><h2 id="resultTitle">YOU MADE IT OUT.</h2><p id="resultCopy">The recordings are safe. For now.</p><button class="start-button" id="restartButton">PLAY AGAIN <span>↻</span></button></div></div>
+          <div class="vignette"></div>
+          <div class="mobile-pad" aria-label="Touch movement controls"><button data-dir="up" aria-label="Move up">▲</button><div><button data-dir="left" aria-label="Move left">◀</button><button data-dir="down" aria-label="Move down">▼</button><button data-dir="right" aria-label="Move right">▶</button></div></div>
+          <button class="touch-run" id="runButton">RUN</button>
+        </div>
+        <div class="frame-bottom"><span><i class="signal-icon">◉</i> FREQUENCY <b id="frequencyText">88.4</b> <span class="unit">FM</span></span><span class="bottom-center" id="hintText">TUNE IN. STAY QUIET.</span><span>BATTERY <b id="batteryText">100%</b></span></div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="panel objective-panel"><div class="panel-heading"><span>YOUR OBJECTIVE</span><span class="panel-index">01 / 03</span></div><h2>Recover the<br><em>recordings.</em></h2><p>Four audio logs. One way out. The van is waiting by the highway.</p><div class="progress-line"><div id="progressFill"></div></div><div class="collect-count"><strong id="collectCount">00</strong><span>/ 04 TAPES FOUND</span></div></section>
+        <section class="panel signal-panel"><div class="panel-heading"><span>PROXIMITY METER</span><span class="panel-index" id="threatState">CLEAR</span></div><div class="radar"><div class="radar-grid"></div><div class="radar-sweep"></div><div class="radar-player"></div><div class="radar-threat hidden" id="radarThreat"></div><div class="radar-blip blip-a"></div><div class="radar-blip blip-b"></div></div><div class="radar-caption"><span><i class="key-player"></i> YOU</span><span><i class="key-threat"></i> UNKNOWN</span></div></section>
+        <section class="panel log-panel"><div class="panel-heading"><span>FIELD NOTES</span><span class="panel-index">REC</span></div><div class="log-entry"><span class="log-time">11:47</span><span id="logText">The radio started by itself.</span></div><div class="log-entry dim"><span class="log-time">???</span><span>Something is out there.</span></div></section>
+        <div class="controls-card"><div class="controls-title">FIELD CONTROLS <span>⌘</span></div><div class="key-row"><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span><span class="key-label">MOVE</span></div><div class="key-row"><span class="keycap wide">⇧ SHIFT</span><span class="key-label">SPRINT — BUT IT HEARS YOU</span></div><div class="key-row"><span class="keycap">M</span><span class="key-label">TOGGLE SOUND</span></div></div>
+      </aside>
+    </section>
+    <footer><span>AN INTERACTIVE NIGHTMARE <b>·</b> EST. 1986</span><span>NO ONE BELIEVES THE RADIO.</span><a href="#game">BACK TO THE FEED ↑</a></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
